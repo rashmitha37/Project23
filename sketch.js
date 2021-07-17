@@ -24,20 +24,20 @@ function setup() {
 	helicopterSprite.addImage(helicopterIMG)
 	helicopterSprite.scale=0.6
 
-	groundSprite=createSprite(width/2, height-35, width,10);
-	groundSprite.shapeColor=color(255)
+	//groundSprite=createSprite(width/2, height-35, width,10);
+	//groundSprite.shapeColor=color(255)
 
 
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.4, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 2 , {restitution:0.4, isStatic:true});
 	World.add(world, packageBody);
 	
 
 	//Create a Ground
-	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
- 	World.add(world, ground);
+	//ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
+ 	//World.add(world, ground);
 
 
  	boxLeftBody = new Box(300, 600, 20, 100);
@@ -72,17 +72,17 @@ function draw() {
  
 }
 function keyPressed(){
-	if(keyDown === LEFT_ARROW){
+	if(keyCode === LEFT_ARROW){
 		helicopterSprite.x = helicopterSprite.x-20;
 		translation={x:-20,y:0}
 		Matter.Body.translate(packageBody, translation)
 	}
-	if(keyDown === RIGHT_ARROW){
+	else if(keyCode === RIGHT_ARROW){
 		helicopterSprite.x = helicopterSprite.x+20;
 		translation={x:20,y:0}
 		Matter.Body.translate(packageBody, translation)
 	}
-	if(keyDown === DOWN_ARROW){
+	if(keyCode === DOWN_ARROW){
 		Matter.Body.setStatic(packageBody,false);
 	}
 
